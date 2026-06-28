@@ -9,7 +9,9 @@ def get_revenue():
     cursor = conn.cursor()
     cursor.execute("""SELECT SUM(p.price * s.quantity)                      
                       FROM products p 
-                          JOIN sales s ON s.product_id = products.id;""")
-    res = cursor.fetchone()
+                          JOIN sales s ON s.product_id = p.id;""")
+    res = cursor.fetchone()[0]
+    cursor.close()
+    conn.close()
     return {"total revenue": res}
 
