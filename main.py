@@ -7,5 +7,9 @@ app = FastAPI()
 def get_revenue():
     conn = get_connection()
     cursor = conn.cursor()
-    cursor.execute()
+    cursor.execute("""SELECT SUM(p.price * s.quantity)                      
+                      FROM products p 
+                          JOIN sales s ON s.product_id = products.id;""")
+    res = cursor.fetchone()
+    return {"total revenue": res}
 
