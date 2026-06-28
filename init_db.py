@@ -23,8 +23,8 @@ CREATE TABLE IF NOT EXISTS products (
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS sales (
     id SERIAL PRIMARY KEY,
-    customer_id INTEGER REFERENCES customers(id),
-    product_id INTEGER REFERENCES products(id),
+    customer_id INTEGER NOT NULL REFERENCES customers(id),
+    product_id INTEGER NOT NULL REFERENCES products(id),
     quantity INTEGER NOT NULL,
     sale_date DATE NOT NULL
 );
