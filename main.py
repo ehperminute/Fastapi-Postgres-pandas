@@ -13,5 +13,5 @@ def get_revenue():
     res = cursor.fetchone()[0]
     cursor.close()
     conn.close()
-    return {"total revenue": res}
+    return {"total_revenue": res}
 
