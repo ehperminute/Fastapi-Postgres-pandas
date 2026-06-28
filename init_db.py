@@ -1,7 +1,14 @@
 import time
 from database import get_connection
 
-conn = get_connection()
+while True:
+    try:
+        conn = get_connection()
+        break
+    except Exception:
+        print("Waiting for PostgreSQL...")
+        time.sleep(1)
+
 cursor = conn.cursor()
 
 cursor.execute("""
